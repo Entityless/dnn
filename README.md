@@ -23,4 +23,6 @@ ASC16 决赛赛题，BP神经网路在天河二号上的实现（CPU+MIC）。
 | 其余 | CPU协同计算（不建议） |
 
 
-代码使用了一定的 dirty code 来实现CPU和MIC的同步。在整个程序的运行中，只会offload一次。CPU和MIC通过flag进行通信。CPU+MIC的问题在于，通信只能够从CPU这边发起。所以，MIC上面有一个字段是flag。CPU有一条线程，专门用来检测。当时我还菜到都不知道有volatile这个关键字，所以flag的用法极为奇葩。
+代码使用了一定的 dirty code 来实现CPU和MIC的同步。在整个程序的运行中，只会offload一次。CPU和MIC通过flag进行通信。CPU+MIC的问题在于，通信只能够从CPU这边发起。所以，MIC上面有一个字段是flag。CPU有一条线程，专门用来检测。当时我还菜到都不知道有volatile这个关键字，所以flag的用法极为奇葩。和flag相关的地方使用了GetSecondELement函数，能不能看懂就随缘吧。（反正我是不想再去review我大二下学期写的flag机制
+
+MIC卡有一点非常坑，就是，如果有两条线程同时尝试和MIC进行数据交换，那么程序可能会挂掉。因此，本程序对于三张MIC，每张MIC由一条线程负责数据传输（包括in和out）。
