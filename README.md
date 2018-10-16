@@ -1,4 +1,6 @@
 # dnn
+代码主要基本框架和CPU矩阵乘法是[EnigmaHuang](https://github.com/EnigmaHuang)写的
+
 ASC16 决赛赛题，BP神经网路在天河二号上的实现（CPU+MIC）。
 
 天河二号（曾经）每个节点有3张MIC。
