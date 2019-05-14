@@ -1,3 +1,9 @@
+# UPDATE 20190514
+
+This repo may contains lots of codes in bad style and dirty commit history, written when I am young, simple and naive.
+
+This repo is no longer maintained.
+
 # dnn
 代码主要基本框架和CPU矩阵乘法是[EnigmaHuang](https://github.com/EnigmaHuang)写的
 
